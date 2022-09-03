@@ -1,15 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Box } from "@mui/system";
+
+// Components
+import {
+  Navbar,
+  Feed,
+  VideoDetail,
+  ChannelDetail,
+  SearchhFeed,
+} from "./components";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-    
-    </div>
-  )
+    <Box sx={{ backgroundColor: "#000" }}>
+      <Navbar />
+      <Routes>
+        <Route path="/" exact element={<Feed />} />
+        <Route path="/video/:id" element={<VideoDetail />} />
+        <Route path="/channel/:id" element={<ChannelDetail />} />
+        <Route path="/search/:searchWord" element={<SearchhFeed />} />
+        <Route
+          path="*"
+          element={
+            <main>
+              {" "}
+              <h1>Error 404</h1>
+            </main>
+          }
+        />
+      </Routes>
+    </Box>
+  );
 }
 
-export default App
+export default App;
