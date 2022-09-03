@@ -28,7 +28,8 @@ a{
 }
 
 .category-btn:hover span{
-  color: white !important;
+  /* color: red ; */
+ 
 }
 .react-player {
   height: 77vh !important;
@@ -57,6 +58,11 @@ a{
   margin: 10px 0px;
   border-radius: 20px;
   transition: all 0.3s ease;
+}
+
+.category-btn:hover{
+  color: red;
+  background-color: white !important;
 }
 
 @media screen and (max-width: 900px) {

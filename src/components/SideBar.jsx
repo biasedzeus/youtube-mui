@@ -1,9 +1,19 @@
+import { Category } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { categories } from "../utils/constants";
+
+// const seletedCategory = "ReactJS";
+
 const SideBar = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+
+  function handleOnclick(categoryName) {
+    setSelectedCategory(categoryName);
+  }
+
   return (
     <Stack
       direction="row"
@@ -16,11 +26,17 @@ const SideBar = () => {
       {categories.map((element) => {
         return (
           <Button
-            sx={{ gap: 2,color:'white' }}
+            className="category-btn"
+            sx={{
+              gap: 2,
+              backgroundColor: element.name === selectedCategory && "white",
+              color: element.name === selectedCategory ? "red" : "white",
+            }}
             key={element.name}
+            onClick={() => handleOnclick(element.name)}
           >
-            {element.icon}
-            <p>{element.name}</p>
+            <span >{element.icon}</span>
+            <span>{element.name}</span>
           </Button>
         );
       })}

@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import SideBar from "./SideBar";
+import Videos from "./Videos";
+
+
 
 const Feed = () => {
   return (
@@ -28,6 +31,20 @@ const Feed = () => {
         >
           Copyright 2022 Youtube MUI
         </Typography>
+      </Box>
+      <Box
+      sx={{
+        overflowY:'auto',
+        height:'90vh',
+        backgroundColor:'yellowgreen',
+      }}
+      p={2}>
+        <Typography variant='h4' fontWeight='bold' mb='2'>
+         New  <span style={{color:'red'}}>videos</span>
+        </Typography>
+
+        <Videos videos={[]}/>
+
       </Box>
     </Stack>
   );
