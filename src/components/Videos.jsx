@@ -1,9 +1,11 @@
 import React from "react";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, CircularProgress } from "@mui/material";
 import VideoCard from "./VideoCard";
 import ChannelCard from "./ChannelCard";
 
-const Videos = ({ videos }) => {
+const Videos = ({ videos,direction }) => {
+
+  if(!videos?.length) return <div><CircularProgress/></div>
   const videoList = videos.map((video) => {
     return (
       <Box key={video?.id?.videoId}>
@@ -15,7 +17,7 @@ const Videos = ({ videos }) => {
 
   return (
     <Stack
-      direction="row"
+      direction={direction || "row"}
       flexWrap="wrap"
       justifyContent="start"
       alignItems="start"
