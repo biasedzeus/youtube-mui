@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, CircularProgress, Stack, Typography } from "@mui/material";
 import SideBar from "./SideBar";
 import Videos from "./Videos";
 import { fetchFromApi } from "../utils/fetchFromApi";
@@ -22,9 +22,8 @@ const Feed = () => {
   }, [selectedCat]);
 
   console.log("feed", videos);
-  
+
   return (
-    
     <Stack
       sx={{
         flexDirection: {
@@ -48,7 +47,17 @@ const Feed = () => {
           Copyright 2022 Youtube MUI
         </Typography>
       </Box>
-      {videos === null && <div><SpeedOutlined/></div>}
+      {videos === null && (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+          }}
+        >
+          <CircularProgress color="inherit" size={80} thickness={2} />
+        </div>
+      )}
       <Box
         sx={{
           overflowY: "auto",
