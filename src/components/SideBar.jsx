@@ -7,13 +7,9 @@ import { categories } from "../utils/constants";
 
 // const seletedCategory = "ReactJS";
 
-const SideBar = () => {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+const SideBar = ({selectedCat,ChangeSelectedCat}) => {
 
-  function handleOnclick(categoryName) {
-    setSelectedCategory(categoryName);
-  }
-
+ 
   return (
     <Stack
       direction="row"
@@ -29,11 +25,11 @@ const SideBar = () => {
             className="category-btn"
             sx={{
               gap: 2,
-              backgroundColor: element.name === selectedCategory && "white",
-              color: element.name === selectedCategory ? "red" : "white",
+              backgroundColor: element.name === selectedCat && "white",
+              color: element.name === selectedCat ? "red" : "white",
             }}
             key={element.name}
-            onClick={() => handleOnclick(element.name)}
+            onClick={() => ChangeSelectedCat(element.name)}
           >
             <span >{element.icon}</span>
             <span>{element.name}</span>

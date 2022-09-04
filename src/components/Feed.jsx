@@ -3,11 +3,28 @@ import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import SideBar from "./SideBar";
 import Videos from "./Videos";
-
-
+import { fetchFromApi } from "../utils/fetchFromApi";
+import { LocalDining, SpeedOutlined } from "@mui/icons-material";
 
 const Feed = () => {
+  const [selectedCat, setSelectedCat] = useState("New");
+  const [videos, setVideos] = useState(null);
+  function ChangeSelectedCat(categoryName) {
+    setSelectedCat(categoryName);
+  }
+
+  console.log("selected", selectedCat);
+
+  useEffect(() => {
+    fetchFromApi(`search?part=snippet&q=${selectedCat}`).then((data) => {
+      setVideos(data.items);
+    });
+  }, [selectedCat]);
+
+  console.log("feed", videos);
+  
   return (
+    
     <Stack
       sx={{
         flexDirection: {
@@ -23,28 +40,28 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <SideBar />
-        <Typography
-          sx={{ mt: 1.5,}}
-          variant="body2"
-          className="copyright"
-        >
+        <SideBar
+          ChangeSelectedCat={ChangeSelectedCat}
+          selectedCat={selectedCat}
+        />
+        <Typography sx={{ mt: 1.5 }} variant="body2" className="copyright">
           Copyright 2022 Youtube MUI
         </Typography>
       </Box>
+      {videos === null && <div><SpeedOutlined/></div>}
       <Box
-      sx={{
-        overflowY:'auto',
-        height:'90vh',
-        backgroundColor:'yellowgreen',
-      }}
-      p={2}>
-        <Typography variant='h4' fontWeight='bold' mb='2'>
-         New  <span style={{color:'red'}}>videos</span>
+        sx={{
+          overflowY: "auto",
+          height: "90vh",
+          // backgroundColor: "yellowgreen",
+        }}
+        p={2}
+      >
+        <Typography variant="h4" fontWeight="bold" mb="2">
+          {selectedCat} <span style={{ color: "red" }}>videos</span>
         </Typography>
 
-        <Videos videos={[]}/>
-
+        {videos && <Videos videos={videos} />}
       </Box>
     </Stack>
   );

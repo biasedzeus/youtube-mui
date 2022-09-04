@@ -3,6 +3,7 @@ html,body{
   padding: 0;
   box-sizing: border-box;
   color:white;
+  
 }
 
 a{
@@ -27,10 +28,10 @@ a{
   color: white !important;
 }
 
-.category-btn:hover span{
+/* .category-btn:hover span{
   /* color: red ; */
  
-}
+/* } */ 
 .react-player {
   height: 77vh !important;
   width: 100% !important;
