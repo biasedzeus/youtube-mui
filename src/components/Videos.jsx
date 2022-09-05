@@ -3,9 +3,8 @@ import { Stack, Box, CircularProgress } from "@mui/material";
 import VideoCard from "./VideoCard";
 import ChannelCard from "./ChannelCard";
 
-const Videos = ({ videos,direction }) => {
-
-  if(!videos?.length) return <div><CircularProgress/></div>
+const Videos = ({ videos, direction }) => {
+  if(!videos) return <div><CircularProgress/></div>
   const videoList = videos.map((video) => {
     return (
       <Box key={video?.id?.videoId}>
