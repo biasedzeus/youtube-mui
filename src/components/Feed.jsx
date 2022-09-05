@@ -66,7 +66,7 @@ const Feed = () => {
         }}
         p={2}
       >
-        <Typography variant="h4" fontWeight="bold" mb="2">
+        <Typography variant="h4" fontWeight="bold" >
           {selectedCat} <span style={{ color: "red" }}>videos</span>
         </Typography>
 
