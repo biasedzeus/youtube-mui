@@ -4,7 +4,7 @@ import VideoCard from "./VideoCard";
 import ChannelCard from "./ChannelCard";
 
 const Videos = ({ videos, direction }) => {
-  if(!videos) return <div><CircularProgress/></div>
+  if(!videos) return <div><CircularProgress sx={{color:'white'}}/></div>
   const videoList = videos.map((video) => {
     return (
       <Box key={video?.id?.videoId}>

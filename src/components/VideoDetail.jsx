@@ -20,16 +20,17 @@ const VideoDetail = () => {
     );
 
     fetchFromApi(
-      `search?.part=snippet$relatedToVideoId=${params.id}$type=video`
+      `search?part=snippet&relatedToVideoId=${params.id}&type=video`
     ).then((data) => {
       setSuggestedVids(data.items);
+      console.log("data", data);
     });
   }, [params.id]);
 
   if (!videoDetail)
     return (
       <div>
-        <CircularProgress />
+        <CircularProgress color="inherit"/>
       </div>
     );
   const {
@@ -85,6 +86,7 @@ const VideoDetail = () => {
           py={{ md: 1, xs: 5 }}
           justifyContent="center"
           alignItems="center"
+          overflow="scroll"
         >
           <Videos videos={suggestedVids} direction="column" />
         </Box>
