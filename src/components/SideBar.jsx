@@ -17,6 +17,7 @@ const SideBar = ({selectedCat,ChangeSelectedCat}) => {
         overflowY: "auto",
         height: { xs: "auto", md: "95%" },
         flexDirection: { md: "column" },
+        // width:'100vw'
       }}
     >
       {categories.map((element) => {
@@ -27,6 +28,9 @@ const SideBar = ({selectedCat,ChangeSelectedCat}) => {
               gap: 2,
               backgroundColor: element.name === selectedCat && "white",
               color: element.name === selectedCat ? "red" : "white",
+              minWidth:{xs:'7rem',md:'10rem'}
+              
+
             }}
             key={element.name}
             onClick={() => ChangeSelectedCat(element.name)}
