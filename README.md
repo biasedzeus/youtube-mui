@@ -2,6 +2,12 @@
 
 [visit website here...](https://youtubemui.netlify.app/)
 
+## Features
+- Search youtube videos.
+- Play videos using react-player.
+- Sidebar with tabs
+- search modal for Mobile devices.
+
 ## Technology Used
  
  - React JS
